@@ -1,8 +1,8 @@
 import { Plus } from 'lucide-react'
 import { DialogTrigger } from '@radix-ui/react-dialog'
 
-import logo from '../assets/in-orbit-logo.svg'
-import rocketLaunchIllustration from '../assets/rocket-launch-illustration.svg'
+import logo from '../assets/logo-keep-moving.svg'
+import rocketLaunchIllustration from '../assets/lets-start.svg'
 import { Button } from './ui/button'
 
 export function EmptyGoals() {
@@ -16,14 +16,13 @@ export function EmptyGoals() {
       />
 
       <p className="text-zinc-300 leading-relaxed max-w-80 text-center">
-        Você ainda não cadastrou nenhuma meta, que tal cadastrar uma agora
-        mesmo?
+        You haven't set any goals yet. How about setting one right now?
       </p>
 
       <DialogTrigger asChild>
         <Button>
           <Plus className="size-4" />
-          Cadastrar meta
+          Set goal
         </Button>
       </DialogTrigger>
     </main>

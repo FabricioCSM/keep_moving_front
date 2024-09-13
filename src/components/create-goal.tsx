@@ -21,7 +21,7 @@ import { toast } from 'sonner'
 import { useQueryClient } from '@tanstack/react-query'
 
 const createGoalSchema = z.object({
-  title: z.string().min(1, 'Informe a atividade que deseja praticar'),
+  title: z.string().min(1, 'Specify the activity you wish to practice'),
   desiredWeeklyFrequency: z.coerce.number().min(1).max(7),
 })
 
@@ -55,9 +55,9 @@ export function CreateGoal() {
       queryClient.invalidateQueries({ queryKey: ['pending-goals'] })
       queryClient.invalidateQueries({ queryKey: ['summary'] })
 
-      toast.success('Meta criada com sucesso!')
+      toast.success('Goal created with success!')
     } catch {
-      toast.error('Erro ao criar a meta, tente novamente!')
+      toast.error('Error creating the goal, please try again!')
     }
   }
 
@@ -66,7 +66,7 @@ export function CreateGoal() {
       <div className="flex flex-col gap-6 h-full">
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <DialogTitle>Cadastrar meta</DialogTitle>
+            <DialogTitle>Set goal</DialogTitle>
 
             <DialogClose>
               <X className="size-5 text-zinc-600" />
@@ -74,8 +74,8 @@ export function CreateGoal() {
           </div>
 
           <DialogDescription>
-            Adicione atividades que te fazem bem e que você quer continuar
-            praticando toda semana.
+            Add activities that make you feel good and that you want to keep
+            doing every week.
           </DialogDescription>
         </div>
 
@@ -85,12 +85,12 @@ export function CreateGoal() {
         >
           <div className="space-y-6">
             <div className="flex flex-col gap-2">
-              <Label htmlFor="title">Qual a atividade?</Label>
+              <Label htmlFor="title">Activity</Label>
 
               <Input
                 id="title"
                 autoFocus
-                placeholder="Praticar exercícios, meditar, etc..."
+                placeholder="Exercise, meditate, etc..."
                 {...register('title')}
               />
 
@@ -101,7 +101,7 @@ export function CreateGoal() {
 
             <div className="flex flex-col gap-2">
               <Label htmlFor="desiredWeeklyFrequency">
-                Quantas vezes na semana?
+                How many times per week?
               </Label>
 
               <Controller
@@ -121,7 +121,7 @@ export function CreateGoal() {
                           <RadioGroupItem key={index} value={frequency}>
                             <RadioGroupIndicator />
                             <span className="text-zinc-300 text-sm font-medium leading-none">
-                              {frequency}x na semana
+                              {frequency} times per week
                             </span>
                             <span className="text-lg leading-none">🥱</span>
                           </RadioGroupItem>
@@ -137,12 +137,12 @@ export function CreateGoal() {
           <div className="flex items-center gap-3 mt-auto">
             <DialogClose asChild>
               <Button variant="secondary" className="flex-1">
-                Fechar
+                Close
               </Button>
             </DialogClose>
 
             <Button type="submit" className="flex-1">
-              Salvar
+              Save
             </Button>
           </div>
         </form>

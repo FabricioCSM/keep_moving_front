@@ -6,10 +6,7 @@ import { Progress, ProgressIndicator } from './ui/progress-bar'
 import { Separator } from './ui/separator'
 import type { GetSummaryResponse } from '../http/get-summary'
 import dayjs from 'dayjs'
-import ptBR from 'dayjs/locale/pt-BR'
 import { PendingGoals } from './pending-goals'
-
-dayjs.locale(ptBR)
 
 interface WeeklySummaryProps {
   summary: GetSummaryResponse['summary']
@@ -36,7 +33,7 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
         <DialogTrigger asChild>
           <Button size="sm">
             <Plus className="size-4" />
-            Cadastrar meta
+            Set goal
           </Button>
         </DialogTrigger>
       </div>
@@ -83,7 +80,7 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
                     <li className="flex items-center gap-2" key={goal.id}>
                       <CheckCircle2 className="size-4 text-pink-500" />
                       <span className="text-sm text-zinc-400">
-                        Você completou "
+                        You have completed "
                         <span className="text-zinc-100">{goal.title}</span>" às{' '}
                         <span className="text-zinc-100">{parsedTime}</span>
                       </span>
